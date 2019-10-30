@@ -52,14 +52,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun onClickClear(v: View) {
         amountStr = amountStr.dropLast(1)
-        tvAmount.text == formattedAmount(amountStr)
+        tvAmount.text = formattedAmount(amountStr)
     }
     private fun onClickOk(v: View) {
         if (amountStr.isEmpty()) return
 
             val request  = XpayRequest()
             request.appPackageName = packageName
-            request.amountPurchase = 0.12
+            request.amountPurchase = ( amountStr.toInt()/100.0)
             request.entryPoint =  EntryPoint.TRANSACTION.name
 
             val act = XpayLink.INSTANCE.callTransaction(this,request)
