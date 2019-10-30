@@ -5,6 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.google.gson.GsonBuilder
+import android.content.ComponentName
+import android.content.Intent.*
+
 
 class  XpayLink : ITransCall{
     override fun callHistory() {
@@ -24,11 +27,13 @@ class  XpayLink : ITransCall{
     //
     override fun callTransaction(context: Context, params: XpayRequest): Intent {
 
-        val  i = context.packageManager.getLaunchIntentForPackage(XPAY_LINK)
+//        val  i = context.packageManager.getLaunchIntentForPackage(XPAY_LINK)
+        val i = Intent(XPAY_LINK)
         val gson = GsonBuilder().setPrettyPrinting().create()
         val gsonStr = gson.toJson(params)
-        i!!.putExtra(XPAY_REQUEST,gsonStr)
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+        i.putExtra(XPAY_REQUEST,gsonStr)
+        i.addFlags(FLAG_ACTIVITY_NEW_TASK)
         return  i
     }
 
