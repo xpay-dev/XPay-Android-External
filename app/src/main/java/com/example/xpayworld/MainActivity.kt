@@ -17,16 +17,16 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        button.setOnClickListener {
+
         //    val request = XpayRequest()
-            val request  = XpayRequest()
-            request.appPackageName = packageName
-            request.amountPurchase = 10005
-            request.entryPoint =  EntryPoint.TRANSACTION.name
+//            val request  = XpayRequest()
+//            request.appPackageName = packageName
+//            request.amountPurchase = 10005
+//            request.entryPoint =  EntryPoint.TRANSACTION.name
+//
+//            val act = XpayLink.INSTANCE.callTransaction(this,request)
+//            startActivity(act)
 
-            val act = XpayLink.INSTANCE.callTransaction(this,request)
-            startActivity(act)
 
-        }
     }
 }
