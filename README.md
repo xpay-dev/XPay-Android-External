@@ -1,2 +1,2 @@
 # XPay-Android-External
-Mobile application that would cater the trigger of the XPay-Payment application 
+Mobile application that would cater to open the XPay-Payment application 
