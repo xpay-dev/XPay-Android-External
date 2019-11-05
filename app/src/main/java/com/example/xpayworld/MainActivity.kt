@@ -7,7 +7,6 @@ import android.widget.Button
 import com.xpayworld.sdk.EntryPoint
 import com.xpayworld.sdk.XpayLink
 import com.xpayworld.sdk.XpayRequest
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_enter_amount.*
 import kotlinx.android.synthetic.main.view_number_pad.*
 import java.text.DecimalFormat
@@ -27,8 +26,6 @@ class MainActivity : AppCompatActivity() {
 
 
         numpad.forEach { button -> button.setOnClickListener { onClickNumpad(it) } }
-
-
 
 
         btnClear.setOnClickListener {
