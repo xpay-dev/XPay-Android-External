@@ -35,8 +35,6 @@ class  XpayRequest {
     @SerializedName("transaction_connection")
     var isOffine = false
 
-    v
-
 }
 
 enum class EntryPoint(val value: String) {
