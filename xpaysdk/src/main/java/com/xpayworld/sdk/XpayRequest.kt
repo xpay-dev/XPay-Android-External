@@ -16,6 +16,7 @@ class  XpayRequest {
     @SerializedName("card_capture_method")
     var cardCaptureMethod = ""
 
+    // AMOUNT 123.03 =  12303
     @SerializedName("amount_purchase")
     var amountPurchase = 0.00
 
@@ -29,16 +30,22 @@ class  XpayRequest {
     var currency= ""
 
     @SerializedName("transaction_entry_point")
-    var entryPoint =  EntryPoint.TRANSACTION.value
+    var entryPoint =  EntryPoint.TRANSACTION.toString()
+
+    @SerializedName("transaction_connection")
+    var isOffine = false
+
+    v
 
 }
 
 enum class EntryPoint(val value: String) {
-    TRANSACTION("transaction_page"),
-    HISTORY("history_page"),
-    ENTER_PIN("enter_pin_page"),
-    PREFERENCE("preference_page"),
-    ACTIVATION("activation_page")
+    TRANSACTION("TRANSACTION"),
+    HISTORY("HISTORY"),
+    ENTER_PIN("ENTER_PIN"),
+    PREFERENCE("PREFERENCE"),
+    ACTIVATION("ACTIVATION");
+    override fun toString() = value
 }
 
 enum class  TransactionType(val value: Int){

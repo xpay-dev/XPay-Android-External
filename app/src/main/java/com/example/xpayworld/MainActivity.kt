@@ -1,5 +1,6 @@
 package com.example.xpayworld
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,10 +11,20 @@ import com.xpayworld.sdk.XpayRequest
 import kotlinx.android.synthetic.main.view_enter_amount.*
 import kotlinx.android.synthetic.main.view_number_pad.*
 import java.text.DecimalFormat
+import android.R.attr.data
+import android.app.Activity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.util.Log
+import com.xpayworld.sdk.XPAY_RESPONSE
+
+
+
 
 
 class MainActivity : AppCompatActivity() {
-
+    private val REQUEST_CODE = 101
 
     var numpad = listOf<Button>()
     var amountStr = ""
@@ -34,6 +45,17 @@ class MainActivity : AppCompatActivity() {
 
         btnOk.setOnClickListener {
             onClickOk(it)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (  requestCode == REQUEST_CODE){
+                if (resultCode == Activity.RESULT_OK){
+                    val returnString = data?.getStringExtra(XPAY_RESPONSE)
+                     Log.e("RESPONSE",returnString!!)
+                }
         }
     }
 
@@ -60,8 +82,10 @@ class MainActivity : AppCompatActivity() {
             request.entryPoint =  EntryPoint.TRANSACTION.name
 
             val act = XpayLink.INSTANCE.callTransaction(this,request)
-            startActivity(act)
+           startActivityForResult(act,REQUEST_CODE)
+        //startActivity(act)
     }
+
 
 
 
