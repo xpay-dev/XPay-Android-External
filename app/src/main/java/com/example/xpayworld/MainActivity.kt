@@ -79,11 +79,12 @@ class MainActivity : AppCompatActivity() {
             val request  = XpayRequest()
             request.appPackageName = packageName
             request.amountPurchase = ( amountStr.toInt()/100.0)
-            request.entryPoint =  EntryPoint.TRANSACTION.name
-
+            request.currency = request.currency
+            request.currencyCode = request.currencyCode
+            request.transactionId = randomAlphaNumericString(8)
+            request.isOffine = true
             val act = XpayLink.INSTANCE.callTransaction(this,request)
            startActivityForResult(act,REQUEST_CODE)
-        //startActivity(act)
     }
 
 
@@ -105,4 +106,11 @@ class MainActivity : AppCompatActivity() {
         return formatedAmount
     }
 
+    fun randomAlphaNumericString(desiredStrLength: Int): String {
+        val charPool: List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+        return (1..desiredStrLength)
+            .map{ kotlin.random.Random.nextInt(0, charPool.size) }
+            .map(charPool::get)
+            .joinToString("")
+    }
 }

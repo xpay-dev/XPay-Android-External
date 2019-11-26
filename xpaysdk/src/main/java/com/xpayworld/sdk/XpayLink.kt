@@ -27,12 +27,12 @@ class  XpayLink : ITransCall{
     //
     override fun callTransaction(context: Context, params: XpayRequest): Intent {
 
-      val  i = context.packageManager.getLaunchIntentForPackage("com.xpayworld.payment")
+      val  i = context.packageManager.getLaunchIntentForPackage("com.xpayworld.payment.debug")
         val gson = GsonBuilder().setPrettyPrinting().create()
         val gsonStr = gson.toJson(params)
-        i!!.flags = 0
-        i.putExtra(XPAY_REQUEST,gsonStr)
-        return  i
+        i?.flags = 0
+        i?.putExtra(XPAY_REQUEST,gsonStr)
+        return  i!!
     }
 
     init {

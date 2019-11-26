@@ -8,15 +8,14 @@ class  XpayRequest {
     var merchantName = ""
 
     @SerializedName("transaction_type")
-    var txnType = TransactionType.CREDIT.value
+    var transactionType = TransactionType.CREDIT.value
 
     @SerializedName("transaction_id")
-    var txnId = ""
+    var transactionId = ""
 
     @SerializedName("card_capture_method")
     var cardCaptureMethod = ""
 
-    // AMOUNT 123.03 =  12303
     @SerializedName("amount_purchase")
     var amountPurchase = 0.00
 
@@ -29,12 +28,14 @@ class  XpayRequest {
     @SerializedName("transaction_currency")
     var currency= ""
 
+    @SerializedName("transaction_code")
+    var currencyCode = ""
+
     @SerializedName("transaction_entry_point")
     var entryPoint =  EntryPoint.TRANSACTION.toString()
 
     @SerializedName("transaction_connection")
     var isOffine = false
-
 }
 
 enum class EntryPoint(val value: String) {
