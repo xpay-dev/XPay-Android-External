@@ -79,8 +79,8 @@ class MainActivity : AppCompatActivity() {
             val request  = XpayRequest()
             request.appPackageName = packageName
             request.amountPurchase = ( amountStr.toInt()/100.0)
-            request.currency = request.currency
-            request.currencyCode = request.currencyCode
+            request.currency = "PHP"
+            request.currencyCode = "608"
             request.transactionId = randomAlphaNumericString(8)
             request.isOffine = true
             val act = XpayLink.INSTANCE.callTransaction(this,request)
