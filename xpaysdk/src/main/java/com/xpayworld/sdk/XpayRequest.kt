@@ -7,9 +7,6 @@ class  XpayRequest {
     @SerializedName("merchant_name")
     var merchantName = ""
 
-    @SerializedName("transaction_type")
-    var transactionType = TransactionType.CREDIT.value
-
     @SerializedName("transaction_id")
     var transactionId = ""
 
@@ -36,27 +33,12 @@ class  XpayRequest {
     var appPackageName = ""
 
     @SerializedName("transaction_currency")
-    var currency= ""
+    var currencySign = ""
 
     @SerializedName("transaction_code")
-    var currencyCode = ""
+    var currencyNumber = ""
 
-    @SerializedName("transaction_entry_point")
-    var entryPoint =  EntryPoint.TRANSACTION.toString()
 
     @SerializedName("transaction_connection")
-    var isOffine = false
-}
-
-enum class EntryPoint(val value: String) {
-    TRANSACTION("TRANSACTION"),
-    HISTORY("HISTORY"),
-    ENTER_PIN("ENTER_PIN"),
-    PREFERENCE("PREFERENCE"),
-    ACTIVATION("ACTIVATION");
-    override fun toString() = value
-}
-
-enum class  TransactionType(val value: Int){
-    CREDIT(0),DEBIT(1)
+    var isOffline = false
 }

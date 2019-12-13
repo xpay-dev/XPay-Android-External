@@ -5,17 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import com.xpayworld.sdk.EntryPoint
 import com.xpayworld.sdk.XpayLink
 import com.xpayworld.sdk.XpayRequest
 import kotlinx.android.synthetic.main.view_enter_amount.*
 import kotlinx.android.synthetic.main.view_number_pad.*
 import java.text.DecimalFormat
-import android.R.attr.data
 import android.app.Activity
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.util.Log
 import com.xpayworld.sdk.XPAY_RESPONSE
 
@@ -78,11 +73,11 @@ class MainActivity : AppCompatActivity() {
 
             val request  = XpayRequest()
             request.appPackageName = packageName
-            request.amountPurchase = ( amountStr.toInt()/100.0)
-            request.currency = "PHP"
-            request.currencyCode = "608"
+            request.amountPurchase = (amountStr.toInt()/100.0)
+            request.currencySign = "PHP"
+            request.currencyNumber = "608"
             request.transactionId = randomAlphaNumericString(8)
-            request.isOffine = true
+            request.isOffline = true
             val act = XpayLink.INSTANCE.callTransaction(this,request)
            startActivityForResult(act,REQUEST_CODE)
     }
