@@ -38,7 +38,6 @@ class  XpayRequest {
     @SerializedName("transaction_code")
     var currencyNumber = ""
 
-
     @SerializedName("transaction_connection")
     var isOffline = false
 }

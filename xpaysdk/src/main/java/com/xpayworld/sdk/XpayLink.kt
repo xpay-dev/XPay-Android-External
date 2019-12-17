@@ -10,24 +10,11 @@ import android.content.Intent.*
 
 
 class  XpayLink : ITransCall{
-    override fun callHistory() {
-
-    }
-
-    override fun callPreference() {
-
-    }
-
-    override fun callEnterPin() {
-    }
-
-    override fun callActivation() {
-    }
 
     //
     override fun callTransaction(context: Context, params: XpayRequest): Intent {
 
-      val  i = context.packageManager.getLaunchIntentForPackage("com.xpayworld.payment.debug")
+      val  i = context.packageManager.getLaunchIntentForPackage("com.xpayworld.payment.release")
         val gson = GsonBuilder().setPrettyPrinting().create()
         val gsonStr = gson.toJson(params)
         i?.flags = 0
